@@ -1,1 +1,2 @@
-ai71
+OpenAI
+python-dotenv
