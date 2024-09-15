@@ -1,6 +1,5 @@
 import streamlit as st
-from io import BytesIO
-from fpdf import FPDF
+
 
 
 
@@ -19,20 +18,14 @@ from openai import OpenAI
 
 load_dotenv()
 
-import requests
 
-API_URL = "http://ec2-3-92-141-83.compute-1.amazonaws.com:3000/api/v1/prediction/4ddce197-2f1a-4a69-bc98-8512e9049641"
-
-def query(payload):
-        response = requests.post(API_URL, json=payload)
-        return response.json()
 
 your_minds_api_key = os.environ.get( "MIND_API_KEY") or  "MIND_API_KEY"
 minds_name = "robots_test2"
 
 # point the Openai SDK to the Minds Cloud
 client = OpenAI(
-    api_key= "4d32253078ba78d64b3bb400573caccf4973224e1f206ac03e252d5820e4c075",
+    api_key= "MIND_API_KEY",
     base_url='https://llm.mdb.ai/'
 )
 
@@ -44,8 +37,6 @@ print('Answering the question may take up to 30 seconds...')
 
 
 
-from io import BytesIO
-from fpdf import FPDF
 
 # Custom CSS for futuristic design
 def add_futuristic_style():
@@ -110,22 +101,6 @@ def add_futuristic_style():
         """, unsafe_allow_html=True
     )
 
-# Function to generate a PDF from the robot's data
-def generate_pdf(robot_info):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
-    
-    pdf.cell(200, 10, txt="Robot Information", ln=True, align="C")
-    for key, value in robot_info.items():
-        pdf.cell(200, 10, txt=f"{key}: {value}", ln=True)
-    
-    # Save the PDF in-memory
-    pdf_output = BytesIO()
-    pdf.output(pdf_output)
-    pdf_output.seek(0)
-    
-    return pdf_output
 
 # Apply the futuristic design
 add_futuristic_style()
@@ -213,10 +188,7 @@ def show_information_robot_page():
     st.title("Information Data Robot")
     st.write("This page gives information about the robot you requested.")
    
-    output = query({
-            "question": "Hey, how are you?",
-        })
-    print(output)
+    
 
 # Define a function to display the Proposal page
 def show_proposal_page():
