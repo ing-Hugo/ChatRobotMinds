@@ -188,7 +188,87 @@ def show_information_robot_page():
     st.title("Information Data Robot")
     st.write("This page gives information about the robot you requested.")
    
-    
+    html_code = """
+        <script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "4ddce197-2f1a-4a69-bc98-8512e9049641",
+        apiHost: "http://ec2-3-92-141-83.compute-1.amazonaws.com:3000",
+        chatflowConfig: {
+            // topK: 2
+        },
+        theme: {
+            button: {
+                backgroundColor: "#3B81F6",
+                right: 20,
+                bottom: 20,
+                size: 48, // small | medium | large | number
+                dragAndDrop: true,
+                iconColor: "white",
+                customIconSrc: "https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg",
+            },
+            tooltip: {
+                showTooltip: true,
+                tooltipMessage: 'Hi There 👋!',
+                tooltipBackgroundColor: 'black',
+                tooltipTextColor: 'white',
+                tooltipFontSize: 16,
+            },
+            chatWindow: {
+                showTitle: true,
+                title: 'Flowise Bot',
+                titleAvatarSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
+                showAgentMessages: true,
+                welcomeMessage: 'Hello! This is custom welcome message',
+                errorMessage: 'This is a custom error message',
+                backgroundColor: "#ffffff",
+                height: 700,
+                width: 400,
+                fontSize: 16,
+                poweredByTextColor: "#303235",
+                botMessage: {
+                    backgroundColor: "#f7f8ff",
+                    textColor: "#303235",
+                    showAvatar: true,
+                    avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png",
+                },
+                userMessage: {
+                    backgroundColor: "#3B81F6",
+                    textColor: "#ffffff",
+                    showAvatar: true,
+                    avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png",
+                },
+                textInput: {
+                    placeholder: 'Type your question',
+                    backgroundColor: '#ffffff',
+                    textColor: '#303235',
+                    sendButtonColor: '#3B81F6',
+                    maxChars: 5000,
+                    maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 5000 characters.',
+                    autoFocus: true, // If not used, autofocus is disabled on mobile and enabled on desktop. true enables it on both, false disables it on both.
+                    sendMessageSound: true,
+                    // sendSoundLocation: "send_message.mp3", // If this is not used, the default sound effect will be played if sendSoundMessage is true.
+                    receiveMessageSound: true,
+                    // receiveSoundLocation: "receive_message.mp3", // If this is not used, the default sound effect will be played if receiveSoundMessage is true. 
+                },
+                feedback: {
+                    color: '#303235',
+                },
+                footer: {
+                    textColor: '#303235',
+                    text: 'Powered by',
+                    company: 'Flowise',
+                    companyLink: 'https://flowiseai.com',
+                }
+            }
+        }
+    })
+</script>
+
+        """
+
+        # Embed the HTML and JavaScript into Streamlit
+    st.components.v1.html(html_code, height=300)
 
 # Define a function to display the Proposal page
 def show_proposal_page():
