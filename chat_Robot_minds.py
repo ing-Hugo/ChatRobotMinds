@@ -25,7 +25,7 @@ minds_name = "robots_test2"
 
 # point the Openai SDK to the Minds Cloud
 client = OpenAI(
-    api_key= "MIND_API_KEY",
+    api_key= st.secrets["MIND_API_KEY"],
     base_url='https://llm.mdb.ai/'
 )
 
