@@ -189,7 +189,7 @@ def show_information_robot_page():
    
    
 # Open link in the same tab
-    st.markdown('<a href="http://ec2-3-92-141-83.compute-1.amazonaws.com:3000/chatbot/4ddce197-2f1a-4a69-bc98-8512e9049641" target="_blank">Agent Coder Robot(Same Tab)</a>', unsafe_allow_html=True)
+    st.markdown('<a href="http://ec2-3-92-141-83.compute-1.amazonaws.com:3000/chatbot/4ddce197-2f1a-4a69-bc98-8512e9049641" target="_blank">Agent Coder Robot</a>', unsafe_allow_html=True)
 
 # Define a function to display the Proposal page
 def show_proposal_page():
@@ -220,7 +220,7 @@ def navigate_page():
     if st.sidebar.button("Request Database Robot"):
         st.session_state.page = "Request"
     
-    if st.sidebar.button("Information Data Robot"):
+    if st.sidebar.button("Agent Coder Robot"):
         st.session_state.page = "Information"
     
     if st.sidebar.button("Proposal"):
